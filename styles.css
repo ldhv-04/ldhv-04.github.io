@@ -77,10 +77,10 @@ a {
 
 .nav-row {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr auto auto;
   align-items: center;
   min-height: 76px;
-  gap: 36px;
+  gap: 18px;
 }
 
 .brand {
@@ -137,6 +137,26 @@ nav a:focus-visible,
 .project-links a:hover,
 .publication a:hover {
   color: var(--green);
+}
+
+.language-toggle {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--green);
+  background: var(--white);
+  cursor: pointer;
+  font: inherit;
+  font-size: .75rem;
+  font-weight: 850;
+}
+
+.language-toggle:hover {
+  color: var(--white);
+  border-color: var(--green);
+  background: var(--green);
 }
 
 .section {
@@ -900,12 +920,16 @@ footer {
 
 @media (max-width: 940px) {
   .nav-row {
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto 1fr auto;
   }
 
   nav {
     justify-content: end;
     overflow-x: auto;
+  }
+
+  .language-toggle {
+    margin-left: auto;
   }
 
   .nav-cv {
@@ -969,18 +993,6 @@ footer {
   }
 
   nav {
-    min-width: 0;
-    justify-content: flex-start;
-    margin-left: auto;
-    gap: 18px;
-  }
-
-  nav a {
-    white-space: nowrap;
-  }
-
-  nav a:nth-child(2),
-  nav a:nth-child(4) {
     display: none;
   }
 
