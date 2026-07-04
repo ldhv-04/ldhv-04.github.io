@@ -106,7 +106,7 @@
           <article class="focus-card">
             <span class="card-number">02</span>
             <h3>AI &amp; Evaluation</h3>
-            <p>PyTorch, EfficientNet-B0, Swin Transformer, scikit-learn, NumPy, Quadratic Weighted Kappa</p>
+            <p>PyTorch, EfficientNet-B0, Swin Transformer, scikit-learn, NumPy,</p>
           </article>
           <article class="focus-card">
             <span class="card-number">03</span>
@@ -169,13 +169,13 @@
           <details class="case-study">
             <summary>Read full case study <span aria-hidden="true">+</span></summary>
             <div class="case-grid">
-              <section><h4>Problem</h4><p>A model prediction alone does not give an agricultural user a usable way to submit images, receive structured detections, or revisit earlier scans.</p></section>
-              <section><h4>Motivation</h4><p>Explore how computer vision can support crop monitoring by turning detections into a structured, reviewable software workflow.</p></section>
-              <section><h4>My role</h4><p>Built or contributed to the FastAPI YOLOv8 service, image validation, bounding-box outputs, authenticated Express workflow, PostgreSQL result persistence, Docker setup, and prediction/upload tests.</p></section>
-              <section><h4>Solution</h4><p>The FastAPI service validates images and returns detections. The Express layer protects scan routes with JWT, persists uploaded files, and stores samples and detection boxes in a PostgreSQL transaction.</p></section>
-              <section><h4>Current result</h4><p>The repository supports local multi-service operation, inference integration, protected scan submission, physical image persistence, and per-user scan history. Current status: in progress.</p></section>
-              <section><h4>Limitations</h4><p>Needs broader real-world crop data, clearer model evaluation, user testing, and a public deployment. The supplied repository does not establish field impact or production use.</p></section>
-              <section class="case-wide"><h4>Next steps</h4><p>Strengthen dataset and evaluation reporting, improve the scan workflow, monitor inference failures, and prepare screenshots and a short demo.</p></section>
+              <section><h4>Problem</h4><p>A single disease identification model faces difficulties in reaching real-world users.</p></section>
+              <section><h4>Motivation</h4><p>Automating many manual agricultural monitoring processes through computer vision applications allows for the management, monitoring, and analysis of crop data.</p></section>
+              <section><h4>My role</h4><p>I joined as a project manager, full-stack developer, devOps specialist, and AI engineer.</p></section>
+              <section><h4>Solution</h4><p>Develop a desktop application using ElectronJS and a mobile application using React Native. Use PostgreSQL for the database. Build APIs between AI services. Set up a CI/CD workflow using GitLab.</p></section>
+              <section><h4>Current result</h4><p>After a short period of development, the project now has two applications: desktop and mobile. One for managers, and one for farmers. These meet the initial basic needs of the model, and the field management features have also been developed.</p></section>
+              <section><h4>Limitations</h4><p>Limitations exist in its ability to process single images; it cannot yet be expanded to handle video processing and live streaming. The source code structure is not optimized, and scalability, maintainability, and security still present many issues. There are no real-world users, and the AI ​​inference service has not yet been measured or optimized.</p></section>
+              <section class="case-wide"><h4>Direction of development</h4><p>Expand the scope of application, creating a comprehensive ecosystem for orchard management. Develop desktop and mobile applications for this ecosystem. Enhance disease detection capabilities across various crops through improvements to the core detection model. Develop and integrate the model into edge devices with smaller parameters, ensuring resource efficiency and cost optimization. Design UAVs to automate manual monitoring processes.</p></section>
             </div>
           </details>
         </article>
@@ -219,13 +219,13 @@
           <details class="case-study">
             <summary>Read full case study <span aria-hidden="true">+</span></summary>
             <div class="case-grid">
-              <section><h4>Problem</h4><p>A driver-monitoring prototype should keep its local workflow available during intermittent connectivity instead of treating the network as a hard dependency.</p></section>
-              <section><h4>Motivation</h4><p>Explore how camera input, lightweight on-device inference, local event handling, and delayed synchronization fit within ESP32-CAM constraints.</p></section>
-              <section><h4>My role</h4><p>The CV records work on ESP-DL face detection, dynamic 96×96 eye-region preprocessing, INT8 FOMO inference with TensorFlow Lite Micro and PSRAM, sustained-closure filtering, UART warnings, Telegram alerts, and a FreeRTOS upload task.</p></section>
-              <section><h4>Solution</h4><p>The CV describes an offline eye-state pipeline with local warning logic. The repository directly shows OV2640 capture plus SD-card JSONL logging, transaction-like file states, streaming upload, rollback, and network backoff.</p></section>
-              <section><h4>Current result</h4><p>Academic prototype. The repository demonstrates local camera operation and a resilient store-and-forward logging path; the full drowsiness pipeline is documented in the CV and design reports.</p></section>
-              <section><h4>Limitations</h4><p>Not a certified safety product. The supplied source does not provide controlled accuracy, latency, memory, lighting, or face-angle evaluation, and does not fully expose every CV-listed inference component.</p></section>
-              <section class="case-wide"><h4>Next steps</h4><p>Consolidate the inference firmware into the public repository, measure latency and memory use, build a controlled eye-state evaluation set, and test low-light and off-angle behavior.</p></section>
+              <section><h4>Problem</h4><p>The drowsiness warning systems in older vehicles are limited in terms of technology and equipment. The input images were too small; when compressed to the 96x96 resolution of the model, the data lost all its features, resulting in a small model that could not make accurate predictions.</p></section>
+              <section><h4>Motivation</h4><p>To create a compact, cost-effective device that solves the problem of falling asleep at the wheel in cars.</p></section>
+              <section><h4>My role</h4><p>I participated in the roles of project manager, lead coder, data collector and analyst, and model trainer and tuner.</p></section>
+              <section><h4>Solution</h4><p>The pipeline is divided into two stages with two small models for processing. Instead of a model that takes the entire face as input, compresses it, and processes it, I use a FOMO (Fast Object, More Object) model from the esp32 library. This model captures the main eye segment, called the ROI. The ROI is then sent to MobileNet for processing. Because when the ROI is cropped, it retains its size even after compression, so the effect is not significantly impacted. As a result, the model learns the data well and achieves good recognition performance in the experimental environment.</p></section>
+              <section><h4>Current result</h4><p>The test results in the laboratory environment were very good. The model achieved an accuracy of > 80% with 3FPS ​​and a latency of 200-500ms. </p></section>
+              <section><h4>Limitations</h4><p>The limitations lie in two things: the processor chip and the camera used to capture input data. The ESP32 generates a lot of heat after a short time, affecting the performance and inference speed of the model. The quality of the input images is also limited. The biggest problem is lighting, such as low light, backlighting, or nighttime shots. Therefore, it might be worth considering upgrading to a more adequate chip, changing the camera resolution, and using a dedicated camera to overcome these issues.</p></section>
+              <section class="case-wide"><h4>Direction of development</h4><p>The project could later develop in a more robust direction. Since the chip is capable of independent processing, it can be researched and integrated into other edge devices, and UAVs are a strong direction in this regard.</p></section>
             </div>
           </details>
         </article>
@@ -271,8 +271,8 @@
               <section><h4>My role</h4><p>Implemented the five-class PyTorch grading pipeline, EfficientNet-B0 attention module, Swin Transformer backbone, PRCF feature fusion, Grad-CAM outputs, and QWK evaluation.</p></section>
               <section><h4>Solution</h4><p>An EfficientNet attention module produces a lesion prompt, PRCF fuses it with Swin patch features, and the remaining Swin stages produce a grade. Grad-CAM supports inspection of model attention.</p></section>
               <section><h4>Current result</h4><p>The repository records a validation QWK of 0.6942 and includes a CLI demo for grade prediction and four-panel attention visualization.</p></section>
-              <section><h4>Limitations</h4><p>Research implementation only. It needs stronger reproducibility and external validation; attention maps are supportive visualizations, not clinical evidence. Not for diagnosis.</p></section>
-              <section class="case-wide"><h4>Next steps</h4><p>Document dataset preparation, add experiment tracking, compare backbones, publish a clearer evaluation report, and validate on an external dataset.</p></section>
+              <section><h4>Limitations</h4><p>The resources available for training are insufficient, and optimizing the architecture to achieve maximum accuracy is challenging. CNNs are quite resource-intensive and consume a lot of resources.</p></section>
+              <section class="case-wide"><h4>Direction of development</h4><p>Document dataset preparation, add experiment tracking, compare backbones, publish a clearer evaluation report, and validate on an external dataset.</p></section>
             </div>
           </details>
         </article>
