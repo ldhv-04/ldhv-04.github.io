@@ -2,7 +2,7 @@ document.querySelector("[data-year]").textContent = new Date().getFullYear();
 
 const vi = {
   "Skip to content": "Bỏ qua đến nội dung chính",
-  "Vũ Lê Đình Hoàng — home": "Vũ Lê Đình Hoàng — trang chủ",
+  "Lê Đình Hoàng Vũ — home": "Lê Đình Hoàng Vũ — trang chủ",
   "Primary navigation": "Điều hướng chính",
   "Technical profile summary": "Tóm tắt hồ sơ kỹ thuật",
   "Portfolio highlights": "Điểm nổi bật của portfolio",
@@ -13,6 +13,77 @@ const vi = {
   "Drowsiness prototype technologies": "Công nghệ của nguyên mẫu phát hiện buồn ngủ",
   "Retinal fundus image beside a Grad-CAM attention map": "Ảnh đáy mắt võng mạc bên cạnh bản đồ chú ý Grad-CAM",
   "WSL-DR technologies": "Công nghệ của WSL-DR",
+  "WSL-DR model workflow": "Quy trình mô hình WSL-DR",
+  "Verified from current repository": "Đã xác minh từ mã nguồn hiện tại",
+  "Source-verified": "Đã xác minh từ mã nguồn",
+  "CV / design documented": "Được mô tả trong CV / thiết kế",
+  "Implemented module": "Mô-đun đã triển khai",
+  "Planned integration": "Tích hợp dự kiến",
+  "Implemented code": "Code đã triển khai",
+  "Referenced / missing artifact": "Được tham chiếu / thiếu artifact",
+  "Verified at commit 6b12544": "Xác minh tại commit 6b12544",
+  "Verified at commit f8ed088": "Xác minh tại commit f8ed088",
+  "Verified at commit d292ae7": "Xác minh tại commit d292ae7",
+  "Client": "Ứng dụng",
+  "Web · Mobile · Electron": "Web · Di động · Electron",
+  "Gateway": "Cổng API",
+  "Validate upload · authorize": "Kiểm tra ảnh · xác thực",
+  "AI service": "Dịch vụ AI",
+  "Pillow preprocessing": "Tiền xử lý bằng Pillow",
+  "Inference": "Suy luận",
+  "Boxes · classes · confidence": "Hộp · lớp · độ tin cậy",
+  "Express persists": "Express lưu",
+  "PostgreSQL results + image storage": "Kết quả PostgreSQL + tệp ảnh",
+  "Per-user scan history": "Lịch sử quét theo người dùng",
+  "Camera": "Camera",
+  "A · Dataset collection": "A · Thu thập dữ liệu",
+  "B · Camera web prototype": "B · Nguyên mẫu camera web",
+  "C · Resilient logging modules": "C · Các mô-đun ghi log chịu lỗi",
+  "Browser": "Trình duyệt",
+  "Select eye label": "Chọn nhãn trạng thái mắt",
+  "Open · Closed · Unsure": "Mở · Nhắm · Chưa rõ",
+  "Web control": "Điều khiển web",
+  "One frame per second": "Một khung hình mỗi giây",
+  "Storage": "Lưu trữ",
+  "Labelled image dataset": "Bộ ảnh đã gán nhãn",
+  "Boot": "Khởi động",
+  "Camera + PSRAM": "Camera + PSRAM",
+  "AI Thinker pin map": "Ánh xạ chân AI Thinker",
+  "Network": "Mạng",
+  "Sensor controls": "Điều khiển cảm biến",
+  "Endpoints": "Endpoint",
+  "Embedded web UI": "Giao diện web nhúng",
+  "Live camera stream": "Luồng camera trực tiếp",
+  "JSONL event": "Sự kiện JSONL",
+  "Generic module input": "Đầu vào mô-đun độc lập",
+  "SD state": "Trạng thái SD",
+  "Rotate · quota prune": "Xoay tệp · dọn quota",
+  "Supervisor": "Bộ giám sát",
+  "Rollback · backoff": "Hoàn tác · backoff",
+  "Receiver": "Bộ nhận",
+  "HTTP stream + tests": "HTTP stream + kiểm thử",
+  "Library asset only: eye-state inference": "Chỉ có thư viện: suy luận trạng thái mắt",
+  "Drowsiness event → JSONL logger": "Sự kiện buồn ngủ → JSONL logger",
+  "Vision pipeline": "Pipeline thị giác",
+  "Eye ROI + FOMO": "ROI mắt + FOMO",
+  "Decision": "Ra quyết định",
+  "Sustained closure": "Nhắm mắt kéo dài",
+  "UART / Telegram alert": "Cảnh báo UART / Telegram",
+  "Event JSON": "Sự kiện JSON",
+  "FreeRTOS upload · rollback/backoff": "FreeRTOS tải lên · hoàn tác/backoff",
+  "Fundus image": "Ảnh đáy mắt",
+  "Resize · normalize": "Đổi kích thước · chuẩn hóa",
+  "Lesion prompt G": "Gợi ý tổn thương G",
+  "Attention + Grad-CAM": "Attention + Grad-CAM",
+  "Feature fusion": "Hợp nhất đặc trưng",
+  "Referenced module": "Mô-đun được tham chiếu",
+  "Output": "Đầu ra",
+  "5-class grade": "Phân độ 5 lớp",
+  "Swin stages + head": "Các tầng Swin + head",
+  "Regression → round/clamp 0–4": "Regression → làm tròn/giới hạn 0–4",
+  "Final Swin block": "Khối Swin cuối",
+  "Attention heatmap": "Bản đồ nhiệt chú ý",
+  "Documented: TFLite Micro · ESP-DL · FOMO": "Theo tài liệu: TFLite Micro · ESP-DL · FOMO",
   "Computer Vision & Applied AI": "Thị giác Máy tính & AI Ứng dụng",
   "About": "Giới thiệu",
   "Focus": "Chuyên môn",
@@ -139,7 +210,17 @@ const vi = {
   "Phone": "Điện thoại",
   "View profile ↗": "Xem hồ sơ ↗",
   "Built with plain HTML, CSS & a little restraint.": "Được xây dựng bằng HTML, CSS thuần và một chút tiết chế.",
-  "Back to top ↑": "Về đầu trang ↑"
+  "Back to top ↑": "Về đầu trang ↑",
+  "I turn computer vision models into practical, testable workflows. My work currently covers an authenticated crop-disease platform, interpretable diabetic-retinopathy research, and ESP32-CAM building blocks for offline vision and resilient event logging.": "Tôi biến các mô hình thị giác máy tính thành những quy trình thực tiễn, có thể kiểm thử. Công việc hiện tại gồm nền tảng bệnh cây có xác thực, nghiên cứu võng mạc có khả năng diễn giải và các mô-đun ESP32-CAM cho thị giác ngoại tuyến cùng ghi log chịu lỗi.",
+  "Ho Chi Minh City, Vietnam\nExpected graduation: December 2026": "TP. Hồ Chí Minh, Việt Nam\nDự kiến tốt nghiệp: Tháng 12/2026",
+  "Expected B.Sc. graduation": "Dự kiến tốt nghiệp Cử nhân",
+  "I am a Computer Science student specializing in Computer Vision at the University of Science, VNU-HCM, with expected graduation in December 2026. I care about the engineering around a model as much as the model itself: reliable inputs, explainable outputs, measurable evaluation, persisted results, and operation under real hardware or network constraints.": "Tôi là sinh viên Khoa học Máy tính chuyên ngành Thị giác Máy tính tại Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM, dự kiến tốt nghiệp tháng 12/2026. Tôi quan tâm cả mô hình lẫn đầu vào, khả năng giải thích, đánh giá, lưu trữ và vận hành dưới giới hạn thực tế.",
+  "Across agriculture, medical imaging, and embedded vision, I focus on making each prototype understandable and usable—not simply producing a checkpoint. I am looking for an internship where I can contribute to practical Computer Vision, Applied AI, or Edge AI work and learn from a strong engineering team.": "Trong nông nghiệp, ảnh y khoa và thị giác nhúng, tôi tập trung làm cho từng nguyên mẫu dễ hiểu và sử dụng được, thay vì chỉ tạo checkpoint. Tôi đang tìm cơ hội thực tập để đóng góp và học hỏi từ một đội ngũ kỹ thuật vững mạnh.",
+  "Project demo →": "Xem demo dự án →",
+  "CropVision moves crop-disease detection beyond a model notebook. Expo clients submit field-linked images, Express coordinates authenticated scans, FastAPI runs YOLOv8, and PostgreSQL keeps the resulting detections available for review.": "CropVision đưa phát hiện bệnh cây ra khỏi phạm vi notebook. Expo gửi ảnh gắn với đồng ruộng, Express điều phối lượt quét có xác thực, FastAPI chạy YOLOv8 và PostgreSQL lưu kết quả để xem lại.",
+  "This repository captures the working pieces of an ESP32-CAM drowsiness prototype: labelled eye-image collection, a camera web server, durable SD logging, and retryable upload. The eye-state model is documented separately and is not yet wired into one end-to-end firmware.": "Kho mã nguồn chứa các thành phần đang hoạt động của nguyên mẫu ESP32-CAM: thu thập ảnh mắt có nhãn, camera web server, ghi log bền vững trên SD và tải lên có retry. Mô hình trạng thái mắt chưa được nối thành một firmware end-to-end.",
+  "WSL-DR studies five-grade diabetic-retinopathy prediction without pixel-level lesion labels. EfficientNet and Grad-CAM create a lesion-aware prompt, Swin features provide global context, and QWK measures agreement across ordinal grades.": "WSL-DR nghiên cứu dự đoán năm mức độ võng mạc đái tháo đường mà không cần nhãn tổn thương theo pixel. EfficientNet và Grad-CAM tạo gợi ý vùng tổn thương, Swin cung cấp ngữ cảnh toàn cục và QWK đo mức độ đồng thuận.",
+  "Open full size ↗": "Mở ảnh đầy đủ ↗"
 };
 
 const languageButton = document.querySelector(".language-toggle");
@@ -173,10 +254,10 @@ function setLanguage(language) {
 
   document.documentElement.lang = language;
   document.title = vietnamese
-    ? "Vũ Lê Đình Hoàng | Thị giác Máy tính & AI Ứng dụng"
-    : "Vũ Lê Đình Hoàng | Computer Vision & Applied AI";
+    ? "Lê Đình Hoàng Vũ | Thị giác Máy tính & AI Ứng dụng"
+    : "Lê Đình Hoàng Vũ | Computer Vision & Applied AI";
   languageButton.textContent = vietnamese ? "EN" : "VI";
-  languageButton.setAttribute("aria-label", vietnamese ? "Switch to English" : "Chuyển sang tiếng Việt");
+  languageButton.setAttribute("aria-label", vietnamese ? "Chuyển sang tiếng Anh" : "Switch to Vietnamese");
   localStorage.setItem("portfolio-language", language);
 }
 

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">CropVision AI current workflow</title>
+  <desc id="desc">Field-linked image upload moves from Expo clients through JWT-protected Express routes to FastAPI YOLOv8 inference, then into PostgreSQL and image storage for scan history.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#668074"/></marker>
+    <style>
+      .title{font:700 42px system-ui;fill:#18211b}.sub{font:20px system-ui;fill:#667069}.lane{font:700 17px system-ui;letter-spacing:2px;fill:#245b43}
+      .box{fill:#fff;stroke:#bfd0c3;stroke-width:2;rx:18}.soft{fill:#e8f1ea;stroke:#9dbba6}.dark{fill:#245b43;stroke:#245b43}
+      .h{font:700 23px system-ui;fill:#18211b}.hd{font:700 23px system-ui;fill:#fff}.p{font:17px system-ui;fill:#667069}.pd{font:17px system-ui;fill:#dce9df}
+      .arrow{stroke:#668074;stroke-width:3;fill:none;marker-end:url(#arrow)}.note{fill:#f5f7f3;stroke:#d9dfd8;stroke-width:2;rx:16}
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="#fbfcfa"/>
+  <text x="70" y="76" class="title">CropVision AI — Current repository workflow</text>
+  <text x="70" y="112" class="sub">Authenticated crop-disease inference, persistence, field context, and review</text>
+  <text x="70" y="172" class="lane">PRIMARY SCAN PATH</text>
+
+  <rect x="70" y="205" width="250" height="155" class="box"/>
+  <text x="95" y="245" class="h">Expo clients</text><text x="95" y="280" class="p">React Native · Web</text><text x="95" y="310" class="p">Electron desktop</text><text x="95" y="340" class="p">Image + field/GPS context</text>
+  <path d="M320 282 H390" class="arrow"/>
+  <rect x="405" y="205" width="270" height="155" class="box soft"/>
+  <text x="430" y="245" class="h">Express gateway</text><text x="430" y="280" class="p">JWT authentication</text><text x="430" y="310" class="p">Multer MIME + 10 MB limit</text><text x="430" y="340" class="p">Service-layer validation</text>
+  <path d="M675 282 H745" class="arrow"/>
+  <rect x="760" y="205" width="270" height="155" class="box"/>
+  <text x="785" y="245" class="h">FastAPI AI Core</text><text x="785" y="280" class="p">Chunked upload read</text><text x="785" y="310" class="p">Pillow decode + EXIF</text><text x="785" y="340" class="p">CPU/CUDA device config</text>
+  <path d="M1030 282 H1100" class="arrow"/>
+  <rect x="1115" y="205" width="350" height="155" class="box dark"/>
+  <text x="1140" y="245" class="hd">Ultralytics YOLOv8</text><text x="1140" y="280" class="pd">Bounding boxes · disease class</text><text x="1140" y="310" class="pd">Confidence · image dimensions</text><text x="1140" y="340" class="pd">Structured prediction response</text>
+
+  <path d="M1290 360 V425 H540 V470" class="arrow"/>
+  <text x="70" y="445" class="lane">PERSISTENCE AND REVIEW</text>
+  <rect x="405" y="480" width="300" height="145" class="box soft"/>
+  <text x="430" y="520" class="h">Transactional result save</text><text x="430" y="555" class="p">crop_samples row</text><text x="430" y="585" class="p">One inference_results row / box</text><text x="430" y="610" class="p">Rollback on database failure</text>
+  <path d="M705 552 H780" class="arrow"/>
+  <rect x="795" y="480" width="280" height="145" class="box"/>
+  <text x="820" y="520" class="h">Physical image storage</text><text x="820" y="555" class="p">Sanitized file name</text><text x="820" y="585" class="p">Docker upload volume</text><text x="820" y="610" class="p">URL stored with sample</text>
+  <path d="M1075 552 H1150" class="arrow"/>
+  <rect x="1165" y="480" width="300" height="145" class="box"/>
+  <text x="1190" y="520" class="h">Per-user scan history</text><text x="1190" y="555" class="p">Samples + detections</text><text x="1190" y="585" class="p">Latest-first query</text><text x="1190" y="610" class="p">Returned to Expo clients</text>
+
+  <text x="70" y="700" class="lane">SUPPORTING SYSTEM</text>
+  <rect x="70" y="725" width="360" height="115" class="note"/><text x="95" y="765" class="h">Field and GIS context</text><text x="95" y="800" class="p">Zustand · MapLibre · Turf.js · GeoJSON</text><text x="95" y="828" class="p">Fields, zones, cultivation and coordinates</text>
+  <rect x="470" y="725" width="300" height="115" class="note"/><text x="495" y="765" class="h">PostgreSQL</text><text x="495" y="800" class="p">Users · scans · boxes · fields</text><text x="495" y="828" class="p">Pure SQL data-access layer</text>
+  <rect x="810" y="725" width="300" height="115" class="note"/><text x="835" y="765" class="h">Docker Compose</text><text x="835" y="800" class="p">db · backend · ai_core</text><text x="835" y="828" class="p">Health and readiness checks</text>
+  <rect x="1150" y="725" width="315" height="115" class="note"/><text x="1175" y="765" class="h">Runnable checks</text><text x="1175" y="800" class="p">Jest · pytest · Playwright</text><text x="1175" y="828" class="p">Upload, API and route contracts</text>
+</svg>

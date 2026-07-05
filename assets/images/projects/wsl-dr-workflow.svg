@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980" role="img" aria-labelledby="title desc">
+  <title id="title">WSL-DR model, evaluation, and interpretability workflow</title>
+  <desc id="desc">A fundus image is preprocessed, sent through EfficientNet Grad-CAM and Swin feature paths, fused by a referenced PRCF module, graded by regression, evaluated with QWK, and visualized with final Grad-CAM.</desc>
+  <defs>
+    <marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#627789"/></marker>
+    <style>
+      .title{font:700 42px system-ui;fill:#18211b}.sub{font:20px system-ui;fill:#667069}.lane{font:700 17px system-ui;letter-spacing:2px;fill:#2f5f88}
+      .box{fill:#fff;stroke:#bdd0df;stroke-width:2;rx:18}.blue{fill:#e9f1f7;stroke:#8eb0c9}.missing{fill:#fff8ef;stroke:#c98642;stroke-width:2;stroke-dasharray:11 8;rx:18}
+      .h{font:700 22px system-ui;fill:#18211b}.p{font:16px system-ui;fill:#667069}.tag{font:700 14px system-ui;fill:#2f5f88}.warn{font:700 14px system-ui;fill:#a96422}
+      .arrow{stroke:#627789;stroke-width:3;fill:none;marker-end:url(#a)}.dash{stroke:#c98642;stroke-width:3;stroke-dasharray:10 8;fill:none;marker-end:url(#a)}
+      .note{fill:#f6f8fa;stroke:#d9e1e7;stroke-width:2;rx:16}
+    </style>
+  </defs>
+  <rect width="1600" height="980" fill="#fbfcfa"/>
+  <text x="65" y="72" class="title">WSL-DR — Model, evaluation, and interpretability flow</text>
+  <text x="65" y="110" class="sub">Implemented code is blue. Dashed amber components are referenced but missing from the supplied repository.</text>
+
+  <text x="65" y="170" class="lane">INPUT AND PARALLEL FEATURE PATHS</text>
+  <rect x="65" y="205" width="250" height="140" class="box"/><text x="90" y="245" class="h">Fundus image</text><text x="90" y="280" class="p">RGB · Resize 224×224</text><text x="90" y="310" class="p">ImageNet normalization</text><text x="90" y="334" class="tag">demo.py</text>
+  <path d="M315 275 H390" class="arrow"/>
+  <rect x="405" y="180" width="330" height="165" class="box blue"/><text x="430" y="220" class="h">Lesion-prompt path</text><text x="430" y="255" class="p">Frozen EfficientNet-B0</text><text x="430" y="285" class="p">Grad-CAM at features.8.0</text><text x="430" y="315" class="p">Heatmap × image → prompt G</text><text x="430" y="339" class="tag">Implemented</text>
+  <path d="M315 275 V425 H405" class="arrow"/>
+  <rect x="405" y="375" width="330" height="145" class="box blue"/><text x="430" y="415" class="h">Global-feature path</text><text x="430" y="450" class="p">Swin-Tiny patch embedding</text><text x="430" y="480" class="p">Patch features → global tensor P</text><text x="430" y="508" class="tag">Implemented</text>
+
+  <path d="M735 262 H835 V355 H880" class="arrow"/><path d="M735 447 H835 V355 H880" class="arrow"/>
+  <rect x="895" y="280" width="310" height="165" class="missing"/><text x="920" y="322" class="h">PRCF feature fusion</text><text x="920" y="357" class="p">PRCFEncoder(P, G)</text><text x="920" y="387" class="p">Pixel relation + channel fusion</text><text x="920" y="417" class="warn">Module absent: PRCF_Encoder</text>
+  <path d="M1205 362 H1280" class="dash"/>
+  <rect x="1295" y="280" width="240" height="165" class="box blue"/><text x="1320" y="322" class="h">Swin stages</text><text x="1320" y="357" class="p">Layers → norm</text><text x="1320" y="387" class="p">Global average pool</text><text x="1320" y="417" class="tag">Model skeleton exists</text>
+
+  <text x="65" y="600" class="lane">GRADE, VALIDATION, AND EXPLANATION</text>
+  <path d="M1415 445 V625 H255 V665" class="arrow"/>
+  <rect x="65" y="675" width="380" height="145" class="box blue"/><text x="90" y="715" class="h">Regression grade head</text><text x="90" y="750" class="p">Linear(..., 1) → scalar score</text><text x="90" y="780" class="p">Round + clamp [0, 4] → DR grade</text><text x="90" y="808" class="tag">Five ordinal outcomes</text>
+  <path d="M445 747 H520" class="arrow"/>
+  <rect x="535" y="675" width="330" height="145" class="box"/><text x="560" y="715" class="h">Validation</text><text x="560" y="750" class="p">Targets vs rounded grades</text><text x="560" y="780" class="p">Quadratic Weighted Kappa</text><text x="560" y="808" class="tag">scikit-learn</text>
+  <path d="M865 747 H940" class="arrow"/>
+  <rect x="955" y="675" width="310" height="145" class="box blue"/><text x="980" y="715" class="h">Final Grad-CAM</text><text x="980" y="750" class="p">Hook final Swin block</text><text x="980" y="780" class="p">Normalize + resize heatmap</text><text x="980" y="808" class="tag">Interpretability output</text>
+  <path d="M1265 747 H1340" class="arrow"/>
+  <rect x="1355" y="675" width="180" height="145" class="box"/><text x="1380" y="715" class="h">4 panels</text><text x="1380" y="750" class="p">Original</text><text x="1380" y="777" class="p">Prompt · CAM</text><text x="1380" y="804" class="p">Overlay</text>
+
+  <rect x="65" y="865" width="1470" height="70" class="note"/><text x="90" y="895" class="h">Reproduction boundary</text><text x="360" y="895" class="p">Missing PRCF_Encoder, prepare_data, and model weights. QWK 0.6942 is repository-recorded, not independently rerun.</text><text x="360" y="922" class="p">Code present: preprocessing, EfficientNet factory, Grad-CAM, lesion prompt, WSL model skeleton, train/validation loops, demo visualization.</text>
+</svg>

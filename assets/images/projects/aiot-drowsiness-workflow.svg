@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1200" viewBox="0 0 1800 1200" role="img" aria-labelledby="title desc">
+  <title id="title">AIoT drowsiness project implementation map</title>
+  <desc id="desc">Four implemented prototype lanes for dataset collection, camera serving, resilient logging, and Flask receiving, plus a dashed planned drowsiness integration lane.</desc>
+  <defs>
+    <marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#67776d"/></marker>
+    <style>
+      .title{font:700 42px system-ui;fill:#18211b}.sub{font:20px system-ui;fill:#667069}.lane{font:700 18px system-ui;letter-spacing:2px;fill:#245b43}
+      .box{fill:#fff;stroke:#bed0c2;stroke-width:2;rx:16}.amber{fill:#fff8ef;stroke:#c98642;stroke-width:2;stroke-dasharray:10 8;rx:16}
+      .h{font:700 21px system-ui;fill:#18211b}.p{font:16px system-ui;fill:#667069}.tag{font:700 14px system-ui;fill:#245b43}.warn{font:700 14px system-ui;fill:#a96422}
+      .arrow{stroke:#67776d;stroke-width:3;fill:none;marker-end:url(#a)}.dash{stroke:#c98642;stroke-width:3;stroke-dasharray:10 8;fill:none;marker-end:url(#a)}
+      .laneBg{fill:#f5f8f4;stroke:#d9dfd8;stroke-width:2;rx:22}
+    </style>
+  </defs>
+  <rect width="1800" height="1200" fill="#fbfcfa"/>
+  <text x="65" y="70" class="title">AIoT Drowsiness Prototype — What is implemented today</text>
+  <text x="65" y="108" class="sub">Solid green lanes are present in source code. The amber dashed lane is documented but not integrated end to end.</text>
+
+  <rect x="55" y="145" width="1690" height="210" class="laneBg"/><text x="85" y="183" class="lane">A · LABELLED DATA COLLECTION</text>
+  <rect x="85" y="210" width="300" height="110" class="box"/><text x="110" y="245" class="h">Browser label control</text><text x="110" y="277" class="p">Open · Closed · Interaction · Unsure</text><text x="110" y="305" class="tag">GET /start · GET /stop</text>
+  <path d="M385 265 H455" class="arrow"/>
+  <rect x="470" y="210" width="300" height="110" class="box"/><text x="495" y="245" class="h">ESP32-CAM capture</text><text x="495" y="277" class="p">OV2640 · JPEG QVGA · 1 FPS</text><text x="495" y="305" class="tag">data_collection.ino</text>
+  <path d="M770 265 H840" class="arrow"/>
+  <rect x="855" y="210" width="300" height="110" class="box"/><text x="880" y="245" class="h">SD_MMC write</text><text x="880" y="277" class="p">pic_&lt;millis&gt;.jpg</text><text x="880" y="305" class="tag">Folder = selected class</text>
+  <path d="M1155 265 H1225" class="arrow"/>
+  <rect x="1240" y="210" width="430" height="110" class="box"/><text x="1265" y="245" class="h">Dataset artifact</text><text x="1265" y="277" class="p">Labelled eye images ready for model work</text><text x="1265" y="305" class="tag">Collection path is source-verified</text>
+
+  <rect x="55" y="380" width="1690" height="210" class="laneBg"/><text x="85" y="418" class="lane">B · CAMERA WEB SERVER</text>
+  <rect x="85" y="445" width="300" height="110" class="box"/><text x="110" y="480" class="h">Boot hardware</text><text x="110" y="512" class="p">AI Thinker pins · camera · PSRAM</text><text x="110" y="540" class="tag">CameraWebServer.ino</text>
+  <path d="M385 500 H455" class="arrow"/>
+  <rect x="470" y="445" width="300" height="110" class="box"/><text x="495" y="480" class="h">Connect Wi-Fi</text><text x="495" y="512" class="p">HTTP server + sensor controls</text><text x="495" y="540" class="tag">Port 80</text>
+  <path d="M770 500 H840" class="arrow"/>
+  <rect x="855" y="445" width="300" height="110" class="box"/><text x="880" y="480" class="h">Camera endpoints</text><text x="880" y="512" class="p">Still JPEG · BMP · status</text><text x="880" y="540" class="tag">app_httpd.cpp</text>
+  <path d="M1155 500 H1225" class="arrow"/>
+  <rect x="1240" y="445" width="430" height="110" class="box"/><text x="1265" y="480" class="h">MJPEG stream + embedded UI</text><text x="1265" y="512" class="p">Live stream on port 81</text><text x="1265" y="540" class="tag">Independent camera prototype</text>
+
+  <rect x="55" y="615" width="1690" height="250" class="laneBg"/><text x="85" y="653" class="lane">C · RESILIENT JSONL LOGGING AND UPLOAD MODULES</text>
+  <rect x="85" y="690" width="300" height="130" class="box"/><text x="110" y="725" class="h">JSON event input</text><text x="110" y="757" class="p">Mutex-protected append + flush</text><text x="110" y="785" class="p">Rotate by bytes / age</text><text x="110" y="810" class="tag">JsonlLogger</text>
+  <path d="M385 755 H455" class="arrow"/>
+  <rect x="470" y="690" width="300" height="130" class="box"/><text x="495" y="725" class="h">SD file state</text><text x="495" y="757" class="p">.jsonl.pending → .sending</text><text x="495" y="785" class="p">Quota prune · startup rollback helper</text><text x="495" y="810" class="tag">Transactional naming</text>
+  <path d="M770 755 H840" class="arrow"/>
+  <rect x="855" y="690" width="300" height="130" class="box"/><text x="880" y="725" class="h">FreeRTOS Supervisor</text><text x="880" y="757" class="p">HEAD reachability · unlock before I/O</text><text x="880" y="785" class="p">Exponential backoff</text><text x="880" y="810" class="tag">Supervisor + Uploader</text>
+  <path d="M1155 755 H1225" class="arrow"/>
+  <rect x="1240" y="690" width="430" height="130" class="box"/><text x="1265" y="725" class="h">HTTP streaming result</text><text x="1265" y="757" class="p">200: delete · failure: rollback to pending</text><text x="1265" y="785" class="p">Bearer + filename/device headers</text><text x="1265" y="810" class="tag">Module exists; firmware entry point missing</text>
+
+  <rect x="55" y="890" width="1690" height="235" fill="#fff8ef" stroke="#c98642" stroke-width="2" stroke-dasharray="12 8" rx="22"/><text x="85" y="928" class="lane" fill="#a96422">PLANNED INTEGRATION · NOT CONNECTED IN CURRENT SOURCE</text>
+  <rect x="85" y="965" width="300" height="115" class="amber"/><text x="110" y="1000" class="h">Camera frame</text><text x="110" y="1032" class="p">OV2640 input</text><text x="110" y="1060" class="warn">Source exists</text>
+  <path d="M385 1022 H455" class="dash"/>
+  <rect x="470" y="965" width="300" height="115" class="amber"/><text x="495" y="1000" class="h">Eye ROI + classifier</text><text x="495" y="1032" class="p">FOMO / TFLite Micro asset</text><text x="495" y="1060" class="warn">No classifier call in firmware</text>
+  <path d="M770 1022 H840" class="dash"/>
+  <rect x="855" y="965" width="300" height="115" class="amber"/><text x="880" y="1000" class="h">Drowsiness decision</text><text x="880" y="1032" class="p">Sustained eye closure</text><text x="880" y="1060" class="warn">CV / design documented</text>
+  <path d="M1155 1022 H1225" class="dash"/>
+  <rect x="1240" y="965" width="430" height="115" class="amber"/><text x="1265" y="1000" class="h">Event → logger → Flask receiver</text><text x="1265" y="1032" class="p">POST /ingest · basename sanitize · tests</text><text x="1265" y="1060" class="warn">Receiver works; integration remains</text>
+</svg>

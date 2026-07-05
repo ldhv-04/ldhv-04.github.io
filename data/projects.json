@@ -5,7 +5,7 @@
     "status": "Graduation project — in progress",
     "repository": "https://github.com/ldhv-04/CropVision",
     "demo": null,
-    "technologies": ["YOLOv8", "FastAPI", "Python", "Express.js", "JWT", "PostgreSQL", "Docker Compose", "pytest"],
+    "technologies": ["Expo/React Native", "Zustand", "MapLibre/Turf.js", "Express.js/JWT", "PostgreSQL", "FastAPI", "Ultralytics YOLOv8", "Docker Compose", "Jest/pytest/Playwright"],
     "result": "The repository supports local multi-service operation, inference integration, protected scan submission, physical image persistence, and per-user scan history.",
     "limitations": "Needs broader real-world crop data, clearer model evaluation, user testing, and a public deployment."
   },
@@ -15,7 +15,8 @@
     "status": "Academic prototype",
     "repository": "https://github.com/ldhv-04/SDEsp32",
     "demo": null,
-    "technologies": ["C/C++", "ESP32-CAM", "OV2640", "TensorFlow Lite Micro", "ESP-DL", "Edge Impulse/FOMO", "FreeRTOS", "Telegram API"],
+    "technologies": ["C/C++", "ESP32-CAM/OV2640", "PSRAM/MicroSD", "FreeRTOS", "ArduinoJson", "Wi-Fi/HTTP streaming", "Python mock server"],
+    "documentedTechnologies": ["TensorFlow Lite Micro", "ESP-DL", "Edge Impulse/FOMO", "Telegram API"],
     "result": "The repository demonstrates local camera operation and a resilient store-and-forward logging path; the full drowsiness pipeline is documented in the CV and design reports.",
     "limitations": "No controlled accuracy, latency, memory, lighting, or face-angle evaluation is supplied; not a certified safety product."
   },
@@ -25,7 +26,7 @@
     "status": "Research implementation",
     "repository": "https://github.com/ldhv-04/WLS-DR",
     "demo": null,
-    "technologies": ["Python", "PyTorch", "EfficientNet-B0", "Swin Transformer", "PRCF", "Grad-CAM", "scikit-learn", "NumPy"],
+    "technologies": ["Python", "PyTorch/Torchvision", "timm", "EfficientNet-B0", "Swin Transformer", "PRCF", "Grad-CAM", "OpenCV", "scikit-learn/NumPy"],
     "result": "The repository records validation QWK 0.6942 and includes a CLI demo for grade prediction and attention visualization.",
     "limitations": "Needs stronger reproducibility and external validation. Interpretability maps are not clinical proof; not for diagnosis."
   }
